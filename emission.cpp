@@ -48,11 +48,12 @@ bool emission::supprimer(int id){
 
 bool emission::modifier(int id){
     QSqlQuery query;
+    QString res=QString::number(id);
     query.prepare("UPDATE emission SET nom = :nom, date_diffusion = :date_diffusion, duree = :duree, type = :type, description = :description WHERE id = :id");
-     query.bindValue(":id", id);
+    query.bindValue(":id", res);
     query.bindValue(":nom", nom);
     query.bindValue(":date_diffusion", date_diffusion);
-    query.bindValue(":duree", duree);  // Add colon here
+    query.bindValue(":duree", duree);
     query.bindValue(":type", type);
     query.bindValue(":description", description);
     return query.exec();
